@@ -165,7 +165,7 @@ initial_activities = {
         "participants": ["william@mergington.edu", "jacob@mergington.edu"]
     },
     "Manga Maniacs": {
-        "description": "Dive into epic adventures, epic battles, and unforgettable friendships! Join fellow manga enthusiasts to discuss the latest shounen action, heartwarming slice-of-life stories, and mind-bending plot twists from your favorite Japanese manga series.",
+        "description": "Dive into epic adventures, intense battles, and unforgettable friendships! Join fellow manga enthusiasts to discuss the latest shounen action, heartwarming slice-of-life stories, and mind-bending plot twists from your favorite Japanese manga series.",
         "schedule": "Tuesdays, 5:00 PM - 6:00 PM",
         "schedule_details": {
             "days": ["Tuesday"],
