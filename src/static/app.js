@@ -608,7 +608,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Create shareable text
     const shareTitle = `${name} - Mergington High School`;
-    const shareText = `Check out this activity at Mergington High School!\n\n${name} (${typeInfo.label})\n${details.description}\n\nSchedule: ${formattedSchedule}\nSpots available: ${details.max_participants - details.participants.length}`;
+    const spotsAvailable = details.max_participants - details.participants.length;
+    const shareText = `Check out this activity at Mergington High School!\n\n` +
+      `${name} (${typeInfo.label})\n${details.description}\n\n` +
+      `Schedule: ${formattedSchedule}\nSpots available: ${spotsAvailable}`;
     const shareUrl = window.location.href;
 
     // Check if Web Share API is supported (mainly mobile devices)
@@ -622,7 +625,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showMessage("Activity shared successfully!", "success");
       } catch (error) {
         // User cancelled share or error occurred
-        if (error.name !== 'AbortError') {
+        if (error instanceof DOMException && error.name !== 'AbortError') {
           console.error("Error sharing:", error);
           // Fallback to copy to clipboard
           copyToClipboard(shareText, shareUrl);
