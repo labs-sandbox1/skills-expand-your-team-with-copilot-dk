@@ -553,6 +553,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </ul>
       </div>
       <div class="activity-card-actions">
+        <button class="share-button" data-activity="${name}" title="Share this activity">
+          <span class="share-icon">🔗</span>
+          <span>Share</span>
+        </button>
         ${
           currentUser
             ? `
@@ -587,7 +591,63 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // Add click handler for share button
+    const shareButton = activityCard.querySelector(".share-button");
+    shareButton.addEventListener("click", () => {
+      shareActivity(name, details);
+    });
+
     activitiesList.appendChild(activityCard);
+  }
+
+  // Function to share an activity
+  async function shareActivity(name, details) {
+    const activityType = getActivityType(name, details.description);
+    const typeInfo = activityTypes[activityType];
+    const formattedSchedule = formatSchedule(details);
+    
+    // Create shareable text
+    const shareTitle = `${name} - Mergington High School`;
+    const spotsAvailable = details.max_participants - details.participants.length;
+    const shareText = `Check out this activity at Mergington High School!\n\n` +
+      `${name} (${typeInfo.label})\n${details.description}\n\n` +
+      `Schedule: ${formattedSchedule}\nSpots available: ${spotsAvailable}`;
+    const shareUrl = window.location.href;
+
+    // Check if Web Share API is supported (mainly mobile devices)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: shareUrl
+        });
+        showMessage("Activity shared successfully!", "success");
+      } catch (error) {
+        // User cancelled share or error occurred
+        if (error instanceof DOMException && error.name !== 'AbortError') {
+          console.error("Error sharing:", error);
+          // Fallback to copy to clipboard
+          copyToClipboard(shareText, shareUrl);
+        }
+      }
+    } else {
+      // Fallback for desktop browsers - copy to clipboard
+      copyToClipboard(shareText, shareUrl);
+    }
+  }
+
+  // Function to copy activity information to clipboard
+  async function copyToClipboard(text, url) {
+    const fullText = `${text}\n\nLink: ${url}`;
+    
+    try {
+      await navigator.clipboard.writeText(fullText);
+      showMessage("Activity link copied to clipboard! Share it with your friends.", "success");
+    } catch (error) {
+      console.error("Failed to copy to clipboard:", error);
+      showMessage("Could not copy to clipboard. Please try again.", "error");
+    }
   }
 
   // Event listeners for search and filter

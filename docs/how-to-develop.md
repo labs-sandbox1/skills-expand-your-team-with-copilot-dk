@@ -64,5 +64,21 @@ These dependencies will be installed when you run `pip install -r src/requiremen
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
 
+### Features
+
+#### Social Sharing
+
+Each activity includes a "Share" button that allows users to easily share activities with their friends:
+
+- **Mobile devices**: Uses the native Web Share API, allowing users to share through their installed apps (messaging, email, social media, etc.)
+- **Desktop browsers**: Automatically copies the activity information to the clipboard with a formatted message including:
+  - Activity name and category
+  - Description
+  - Schedule
+  - Number of available spots
+  - Link to the website
+
+Users receive a confirmation message when the activity is successfully shared or copied to clipboard.
+
 > [!IMPORTANT]
 > All data is stored in memory, which means data will be reset when the server restarts.
