@@ -66,3 +66,13 @@ These dependencies will be installed when you run `pip install -r src/requiremen
 
 > [!IMPORTANT]
 > All data is stored in memory, which means data will be reset when the server restarts.
+
+## Features
+
+### Dark Mode
+
+The website includes a dark mode feature that students can toggle using the button in the top right corner of the header.
+
+- **Toggle Button**: Click the moon icon (🌙) to switch to dark mode, or the sun icon (☀️) to switch back to light mode
+- **Persistent Preference**: Your theme preference is automatically saved and will be remembered when you return to the site
+- **Accessibility**: The toggle button includes proper ARIA labels for screen readers
