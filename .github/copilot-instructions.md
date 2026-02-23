@@ -29,16 +29,16 @@ Consider the following when communicating with the staff.
 - Do not make additional apps or services.
 - Do not make command line tools.
 - Do not create a long single file application. Always use an easy-to-understand directory structure.
-- Only use HTML, CSS, Javascript, and Python. No other languages.
+- Only use HTML, CSS, JavaScript, and Python. No other languages.
 
 ### Documentation
 
 - Always update the README file to explain how to use the program. Assume the user will quickly forget so good documentation is important.
-- Once the readme gets too long, start organizing it into a docs directory.
+- Once the README gets too long, start organizing it into a docs directory.
 
 ### Quality considerations
 
-- If the tasks involves grades, scores, or other numerical data, isolate those functions and make sure they are correct with unit tests.
+- If the task involves grades, scores, or other numerical data, isolate those functions and make sure they are correct with unit tests.
 
 ### Security considerations
 
