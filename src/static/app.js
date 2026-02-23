@@ -514,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     // Create difficulty badge if difficulty is specified
-    const difficultyBadge = details.difficulty ? `
+    const difficultyBadge = details.difficulty && typeof details.difficulty === 'string' ? `
       <span class="difficulty-badge difficulty-${details.difficulty.toLowerCase()}">
         ${details.difficulty}
       </span>
