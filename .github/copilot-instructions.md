@@ -1,4 +1,6 @@
-### School Overview
+# Copilot Instructions
+
+## School Overview
 
 - The school name is "Mergington High School"
 - The school is a public high school in Mergington, Florida.
